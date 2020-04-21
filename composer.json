@@ -1,0 +1,20 @@
+{
+	"name": "asvvvad/dollaapp-clipboard-php",
+	"description": "Provide copying and pasting to the Clipboard for PHP.",
+	"type": "library",
+	"require": {
+		"php": ">=7.0.0"
+	},
+	"license": "GPL-3.0",
+	"authors": [
+		{
+			"name": "asvvvad",
+			"email": "asvvvad@firemail.cc"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"dollaapp\\": ""
+		}
+	}
+}
