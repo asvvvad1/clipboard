@@ -32,7 +32,7 @@ class Clipboard
 	{
 		switch (PHP_OS_FAMILY) {
 			case 'Solaris': case 'BSD': case 'Linux':
-				if (env('WAYLAND_DISPLAY') != null) {
+				if (getenv('WAYLAND_DISPLAY') != false) {
 					if ($this->lookPath('wl-paste') and $this->lookPath('wl-copy')) {
 						$this->pasteCmdArgs = "wl-paste --no-newline";
 						$this->copyCmdArgs = "wl-copy";
