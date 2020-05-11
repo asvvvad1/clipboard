@@ -2,7 +2,7 @@
 
 /**
  * Clipboard - perform clipboard operations in PHP
- * Homepage: https://github.com/asvvvad/clipboard-php
+ * Homepage: https://github.com/asvvvad/clipboard
  * Made by ASVVVAD (https://asvvad.eu.org)
  */
 class Clipboard
@@ -32,7 +32,7 @@ class Clipboard
 	{
 		switch (PHP_OS_FAMILY) {
 			case 'Solaris': case 'BSD': case 'Linux':
-				if (isset(env('WAYLAND_DISPLAY'))) {
+				if (env('WAYLAND_DISPLAY') != null) {
 					if ($this->lookPath('wl-paste') and $this->lookPath('wl-copy')) {
 						$this->pasteCmdArgs = "wl-paste --no-newline";
 						$this->copyCmdArgs = "wl-copy";
@@ -46,8 +46,8 @@ class Clipboard
 					$this->pasteCmdArgs = 'xsel --output --clipboard';
 					$this->copyCmdArgs = 'xsel --input --clipboard';
 				} elseif ($this->lookPath('termux-clipboard-get') and $this->lookPath('termux-clipboard-get')) {
-					$this->pasteCmdArgs = 'termux-clipboard-get'
-					$this->copyCmdArgs = 'termux-clipboard-set'
+					$this->pasteCmdArgs = 'termux-clipboard-get';
+					$this->copyCmdArgs = 'termux-clipboard-set';
 				} else {
 					$this->unsupported = true;
 				}
@@ -59,7 +59,7 @@ class Clipboard
 			case 'Windows':
 				// needs: https://www.c3scripts.com/tutorials/msdos/paste.html#exe
 				if (lookPath("paste.exe")) {
-					$this->pasteCmdArgs = 'paste'
+					$this->pasteCmdArgs = 'paste';
 				} else {
 					// https://github.com/Microsoft/WSL/issues/1069
 					// slower
