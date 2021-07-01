@@ -63,7 +63,7 @@ class Clipboard
 				} else {
 					// https://github.com/Microsoft/WSL/issues/1069
 					// slower
-					$this->pasteCmdArgs = 'powershell.exe -Command Get-Clipboard';
+					$this->pasteCmdArgs = 'powershell -sta "add-type -as System.Windows.Forms; [windows.forms.clipboard]::GetText()"';
 				}
 				$this->copyCmdArgs = 'clip';
 				break;
